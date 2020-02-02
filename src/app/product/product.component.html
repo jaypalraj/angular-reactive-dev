@@ -1,0 +1,42 @@
+
+
+<div class="container">
+
+    <h3>Products</h3>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <select class="form-control">
+                <option value="0">Display All</option>
+                <option *ngFor="let category of productCategories$ | async" [value]="category.id">
+                    {{ category.name }}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Code</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>In Stock</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of productWithCategory$ | async">
+                    <td>{{ product.productName }}</td>
+                    <td>{{ product.productCode }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.price | currency:"GBP" }}</td>
+                    <td>{{ product.quantityInStock }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
