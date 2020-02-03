@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-sm-3">
-            <select class="form-control">
+            <select class="form-control" (change)="OnSelectedCategoryChanged($event.target.value)">
                 <option value="0">Display All</option>
                 <option *ngFor="let category of productCategories$ | async" [value]="category.id">
                     {{ category.name }}
@@ -27,7 +27,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let product of productWithCategory$ | async">
+                <tr *ngFor="let product of products$ | async">
                     <td>{{ product.productName }}</td>
                     <td>{{ product.productCode }}</td>
                     <td>{{ product.category }}</td>
